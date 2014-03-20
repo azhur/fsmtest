@@ -21,30 +21,15 @@ abstract class FSMSwitcherSpec extends TestKit(ActorSystem("test")) with Implici
   }
 
   "Switch between states A" must {
-    "A -> AA" in {
+    "should return `await-ping`" in {
       adaptation ! "ping"
       expectMsg("await-ping")
       adaptation.stateName should be(StateA)
     }
-    "A -> A" in {
-      adaptation ! "pingus"
+    "should return `stay-ping`" in {
+      adaptation ! "pong"
       expectMsg("stay-ping")
       adaptation.stateName should be(StateA)
-    }
-  }
-
-  "Switch between states B" must {
-    "B -> BB" in {
-      adaptation.setState(StateB)
-      adaptation ! "pong"
-      expectMsg("await-pong")
-      adaptation.stateName should be(StateB)
-    }
-    "B -> B" in {
-      adaptation.setState(StateB)
-      adaptation ! "pongus"
-      expectMsg("stay-pong")
-      adaptation.stateName should be(StateB)
     }
   }
 }

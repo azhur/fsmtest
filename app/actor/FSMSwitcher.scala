@@ -23,21 +23,6 @@ trait FSMSwitcher {this: Actor with LoggingFSM[State, Data] =>
       goto(StateA) replying str
   }
 
-  when(StateB) {
-    case Event(str: String, _) =>
-      if (str == "pong") {
-        Future("await-pong").pipeTo(self)(sender)
-        goto(AwaitStateB)
-      } else {
-        stay() replying "stay-pong"
-      }
-  }
-
-  when(AwaitStateB) {
-    case Event(str: String, _) =>
-      goto(StateB) replying str
-  }
-
   whenUnhandled{
     case Event(m, d) ⇒
       log.error("Unknown message {} in state {} with data {}", m, stateName, stateData)
@@ -49,8 +34,6 @@ sealed trait State
 
 case object StateA extends State
 case object AwaitStateA extends State
-case object StateB extends State
-case object AwaitStateB extends State
 
 sealed trait Data
 case object NoData extends Data
