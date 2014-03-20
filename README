@@ -1,1 +1,1 @@
-Tests akka FSM with futures (Await states). Problem now is that tests are randomly failed.
+Tests akka FSM with futures (Await states). Problem now is that tests are randomly failed when they run with `play test`.
