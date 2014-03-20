@@ -1,4 +1,1 @@
-This is your new Play application
-=====================================
-
-This file will be packaged with your application, when using `play dist`.
+Tests akka FSM with futures (Await states). Problem now is that tests are randomly failed.
