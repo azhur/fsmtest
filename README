@@ -1,1 +1,2 @@
 Tests akka FSM with futures (Await states). Problem now is that tests are randomly failed when they run with `play test`.
+Thanks to guys from akka http://stackoverflow.com/questions/22537015/testing-akka-fsm-with-futures.
